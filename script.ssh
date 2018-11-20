@@ -1,0 +1,4 @@
+./yacc.exe -J inicioCT.y
+Jflex inicioCT.jflex;
+javac *.java;
+java Parser teste_ct.txt;
