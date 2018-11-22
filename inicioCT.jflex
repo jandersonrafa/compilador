@@ -23,11 +23,15 @@ NL = \n | \r | \r\n
 
 funcao_principal { return Parser.FUNCAO_PRINCIPAL; }
 funcao { return Parser.FUNCAO; }
+para { return Parser.PARA; }
 , { return Parser.VIRGULA; }
+";" { return Parser.PONTO_VIRGULA; }
+":=" { return Parser.OPERADOR_ATRIBUIR; }
+"<=" { return Parser.OPERADOR_MENOR_IGUAL; }
+"+" { return Parser.OPERADOR_MAIS; }
 incluir	{ return Parser.INCLUIR; }
-(real|inteiro)	{ 
-			yyparser.yylval = new ParserVal(yytext());
-		  return Parser.TIPO_DADO; }
+inteiro { return Parser.INTEIRO; }
+real { return Parser.REAL; }
 \<.*\>	{ yyparser.yylval = new ParserVal(yytext());
 		  return Parser.INCLUSAO_ARQUIVO; }
 "("	{ return Parser.ABRE_PARENTESES; }
@@ -38,4 +42,8 @@ incluir	{ return Parser.INCLUIR; }
 		yyparser.yylval = new ParserVal(yytext());
 		return Parser.IDENTIFICADOR;
 	}
+[a-zA-Z0-9]*	{ 
+		yyparser.yylval = new ParserVal(yytext());
+		return Parser.VALOR;
+	}	
 {NL}|" "|\t	{  }

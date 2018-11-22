@@ -5,6 +5,21 @@ funcao_principal {
 	inteiro teste	
 }
 
+funcao real media (inteiro a) {
+  inteiro i
+  inteiro soma
+  inteiro quantidade
+  real retorno
+
+  soma := 0
+  quantidade := 0
+  
+  para (i := 1; i <=a12312; i++) {  
+  
+  }
+
+}
+
 funcao real teste (real maoi,inteiro teste) {
 	inteiro teste
 }
