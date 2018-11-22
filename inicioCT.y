@@ -5,16 +5,22 @@
 
 /* BYACC Declarations */
 %token <sval> IDENTIFICADOR
+%token <sval> TIPO_DADO
 %token <sval> INCLUSAO_ARQUIVO
+%token ABRE_PARENTESES
+%token FECHA_PARENTESES
 %token ABRE_CHAVES
 %token FECHA_CHAVES
 %token FUNCAO_PRINCIPAL
+%token FUNCAO
 %token INCLUIR
-%token INTEIRO
+%token VIRGULA
 %type <sval> programa
 %type <sval> funcao_principal
+%type <sval> funcao
 %type <sval> inclusao
 %type <sval> comandos
+%type <sval> parametros
 %type <sval> declaracao
 
 %%
@@ -22,16 +28,22 @@ inicio : programa	 { System.out.println($1); }
 
 programa : inclusao programa	{ $$ = $1 + "\n" + $2; }
 		 | funcao_principal programa { $$ = $1 + "\n" + $2; }
+		 | funcao programa { $$ = $1 + "\n" + $2; }
 	     |					{ $$ = ""; }
 
 funcao_principal : FUNCAO_PRINCIPAL ABRE_CHAVES comandos FECHA_CHAVES { $$ = "int main() {\n " + $3 + "}\n"; }
+funcao : FUNCAO TIPO_DADO IDENTIFICADOR ABRE_PARENTESES parametros FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES { $$ = $2 + " " + $3 + "(" + $5 + ") {\n " + $8 + "}\n"; }
+	   | FUNCAO TIPO_DADO IDENTIFICADOR ABRE_PARENTESES FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES { $$ = $2 + " " + $3 + "() {\n " + $7 + "}\n"; }
 
 inclusao : INCLUIR INCLUSAO_ARQUIVO	{ $$ = "#include " + $2; }
 
 comandos : declaracao		{ $$ = $1; }
 		 |					{ $$ = ""; }
 
-declaracao : INTEIRO IDENTIFICADOR	{  $$ = "int " + $2 + ";\n"; }
+parametros : TIPO_DADO IDENTIFICADOR	{  $$ = $1 + " " + $2 ; }		   
+		   | TIPO_DADO IDENTIFICADOR VIRGULA parametros	{  $$ = "int " + $2 + ", " + $4; }
+
+declaracao : TIPO_DADO IDENTIFICADOR	{  $$ = "int " + $2 + ";\n"; }
 
 %%
 

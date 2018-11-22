@@ -4,3 +4,10 @@ incluir <stdlib.h>
 funcao_principal {
 	inteiro teste	
 }
+
+funcao real teste (real maoi,inteiro teste) {
+	inteiro teste
+}
+funcao inteiro teste () {
+	inteiro teste
+}
