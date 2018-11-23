@@ -14,11 +14,17 @@ funcao real media (inteiro a) {
   soma := 0
   quantidade := 0
   
-  para (i := 1; i <=a12312; i++) {  
-  
+  para (i := 1; i <= a; i++) {  
+    se (a%i == 0) {
+      quantidade++
+      soma := soma + i
+    }
   }
 
+  retorno := soma / quantidade
+  retornar retorno
 }
+
 
 funcao real teste (real maoi,inteiro teste) {
 	inteiro teste

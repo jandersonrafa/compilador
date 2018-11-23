@@ -33,12 +33,12 @@ class Yylex {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\36\1\1\1\26\1\26\1\2\22\0\1\36\7\0\1\30"+
-    "\1\31\1\0\1\23\1\16\3\0\12\35\1\20\1\17\1\22\1\21"+
-    "\1\27\2\0\32\34\4\0\1\11\1\0\1\7\1\34\1\6\1\34"+
-    "\1\25\1\3\2\34\1\14\2\34\1\15\1\34\1\5\1\10\1\12"+
-    "\1\34\1\13\1\34\1\24\1\4\5\34\1\32\1\0\1\33\7\0"+
-    "\1\26\u1fa2\0\1\26\1\26\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\43\1\1\1\33\1\33\1\2\22\0\1\43\4\0\1\32"+
+    "\2\0\1\35\1\36\1\30\1\26\1\21\1\27\1\0\1\31\12\42"+
+    "\1\23\1\22\1\25\1\24\1\34\2\0\32\41\4\0\1\11\1\0"+
+    "\1\7\1\41\1\6\1\41\1\17\1\3\2\41\1\14\2\41\1\15"+
+    "\1\41\1\5\1\10\1\12\1\41\1\13\1\16\1\20\1\4\5\41"+
+    "\1\37\1\0\1\40\7\0\1\33\u1fa2\0\1\33\1\33\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -51,13 +51,14 @@ class Yylex {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\2\2\5\3\1\4\1\5\2\0\1\6\1\7"+
-    "\1\10\1\11\1\12\1\1\4\3\1\13\1\0\1\14"+
-    "\1\15\6\3\1\16\1\17\5\3\1\20\2\3\1\0"+
-    "\1\21\1\22\10\0\1\23";
+    "\1\0\2\1\6\2\1\3\1\4\3\0\1\5\1\6"+
+    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
+    "\4\2\1\17\1\20\1\21\1\0\1\22\1\23\7\2"+
+    "\1\24\1\25\7\2\1\26\3\2\1\0\1\2\1\27"+
+    "\1\30\1\0\1\31\7\0\1\32";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[54];
+    int [] result = new int[68];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -82,16 +83,18 @@ class Yylex {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\37\0\76\0\135\0\174\0\233\0\272\0\331"+
-    "\0\37\0\37\0\370\0\u0117\0\37\0\37\0\37\0\37"+
-    "\0\37\0\u0136\0\u0155\0\u0174\0\u0193\0\u01b2\0\37\0\u01d1"+
-    "\0\u01d1\0\u01d1\0\u01f0\0\u020f\0\u022e\0\u024d\0\u026c\0\u028b"+
-    "\0\174\0\174\0\u02aa\0\u02c9\0\u02e8\0\u0307\0\u0326\0\u0345"+
-    "\0\u0364\0\u0383\0\u03a2\0\174\0\174\0\u03c1\0\u03e0\0\u03ff"+
-    "\0\u041e\0\u043d\0\u045c\0\u047b\0\u049a\0\37";
+    "\0\0\0\44\0\110\0\154\0\220\0\264\0\330\0\374"+
+    "\0\u0120\0\44\0\44\0\u0144\0\u0168\0\u018c\0\44\0\44"+
+    "\0\44\0\44\0\44\0\44\0\44\0\44\0\44\0\u01b0"+
+    "\0\u01d4\0\u01f8\0\u021c\0\u0240\0\220\0\44\0\44\0\u0264"+
+    "\0\u0264\0\u0264\0\u0288\0\u02ac\0\u02d0\0\u02f4\0\u0318\0\u033c"+
+    "\0\u0360\0\220\0\220\0\u0384\0\u03a8\0\u03cc\0\u03f0\0\u0414"+
+    "\0\u0438\0\u045c\0\u0480\0\u04a4\0\u04c8\0\u04ec\0\u0510\0\u0534"+
+    "\0\220\0\220\0\u0558\0\220\0\u057c\0\u05a0\0\u05c4\0\u05e8"+
+    "\0\u060c\0\u0630\0\u0654\0\44";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[54];
+    int [] result = new int[68];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -115,45 +118,46 @@ class Yylex {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\0\1\2\1\3\1\4\5\5\1\0\1\6\1\7"+
-    "\1\10\1\5\1\11\1\12\1\13\1\0\1\14\1\15"+
-    "\2\5\2\0\1\16\1\17\1\20\1\21\1\5\1\22"+
-    "\1\2\40\0\1\2\40\0\1\5\1\23\4\5\1\0"+
-    "\4\5\6\0\2\5\6\0\2\5\4\0\6\5\1\0"+
-    "\4\5\6\0\2\5\6\0\2\5\4\0\4\5\1\24"+
-    "\1\5\1\0\4\5\6\0\2\5\6\0\2\5\4\0"+
-    "\6\5\1\0\4\5\6\0\1\5\1\25\6\0\2\5"+
-    "\4\0\2\5\1\26\3\5\1\0\4\5\6\0\2\5"+
-    "\6\0\2\5\22\0\1\27\15\0\1\30\2\0\16\30"+
-    "\1\31\4\30\1\0\1\32\7\30\3\0\6\22\1\0"+
-    "\4\22\6\0\2\22\6\0\2\22\4\0\2\5\1\33"+
-    "\3\5\1\0\4\5\6\0\2\5\6\0\2\5\4\0"+
-    "\6\5\1\0\1\5\1\34\2\5\6\0\2\5\6\0"+
-    "\2\5\4\0\4\5\1\35\1\5\1\0\4\5\6\0"+
-    "\2\5\6\0\2\5\4\0\3\5\1\36\2\5\1\0"+
-    "\4\5\6\0\1\37\1\5\6\0\2\5\1\0\1\30"+
-    "\2\0\23\30\1\0\1\32\7\30\3\0\3\5\1\40"+
-    "\2\5\1\0\4\5\6\0\2\5\6\0\2\5\4\0"+
-    "\4\5\1\41\1\5\1\0\4\5\6\0\2\5\6\0"+
-    "\2\5\4\0\6\5\1\0\3\5\1\42\6\0\2\5"+
-    "\6\0\2\5\4\0\6\5\1\0\3\5\1\43\6\0"+
-    "\2\5\6\0\2\5\4\0\6\5\1\0\4\5\6\0"+
-    "\1\5\1\44\6\0\2\5\4\0\4\5\1\45\1\5"+
-    "\1\0\4\5\6\0\2\5\6\0\2\5\4\0\1\5"+
-    "\1\46\4\5\1\0\4\5\6\0\2\5\6\0\2\5"+
-    "\4\0\6\5\1\0\2\5\1\47\1\5\6\0\2\5"+
-    "\6\0\2\5\4\0\5\5\1\50\1\0\4\5\6\0"+
-    "\2\5\6\0\2\5\4\0\6\5\1\0\2\5\1\51"+
-    "\1\5\6\0\2\5\6\0\2\5\4\0\6\5\1\0"+
-    "\1\5\1\52\2\5\6\0\2\5\6\0\2\5\4\0"+
-    "\6\5\1\53\4\5\6\0\2\5\6\0\2\5\4\0"+
-    "\6\5\1\0\1\5\1\54\2\5\6\0\2\5\6\0"+
-    "\2\5\4\0\5\5\1\55\1\0\4\5\6\0\2\5"+
-    "\6\0\2\5\13\0\1\56\37\0\1\57\37\0\1\60"+
-    "\27\0\1\61\37\0\1\62\44\0\1\63\34\0\1\64"+
-    "\33\0\1\65\44\0\1\66\21\0";
+    "\1\10\1\5\1\11\2\5\1\12\1\13\1\14\1\15"+
+    "\1\16\1\17\1\20\1\21\1\22\1\23\2\0\1\24"+
+    "\1\25\1\26\1\27\1\5\1\30\1\2\45\0\1\2"+
+    "\45\0\1\5\1\31\4\5\1\0\7\5\20\0\2\5"+
+    "\4\0\6\5\1\0\7\5\20\0\2\5\4\0\4\5"+
+    "\1\32\1\5\1\0\7\5\20\0\2\5\4\0\6\5"+
+    "\1\0\5\5\1\33\1\5\20\0\2\5\4\0\2\5"+
+    "\1\34\3\5\1\0\7\5\20\0\2\5\4\0\6\5"+
+    "\1\0\5\5\1\35\1\5\20\0\2\5\25\0\1\36"+
+    "\43\0\1\37\17\0\1\40\2\0\21\40\1\41\6\40"+
+    "\1\0\1\42\7\40\3\0\6\30\1\0\7\30\20\0"+
+    "\2\30\4\0\2\5\1\43\3\5\1\0\7\5\20\0"+
+    "\2\5\4\0\6\5\1\0\1\5\1\44\5\5\20\0"+
+    "\2\5\4\0\4\5\1\45\1\5\1\0\6\5\1\46"+
+    "\20\0\2\5\4\0\3\5\1\47\2\5\1\0\6\5"+
+    "\1\50\20\0\2\5\1\0\1\40\2\0\30\40\1\0"+
+    "\1\42\7\40\3\0\3\5\1\51\2\5\1\0\7\5"+
+    "\20\0\2\5\4\0\4\5\1\52\1\5\1\0\7\5"+
+    "\20\0\2\5\4\0\6\5\1\0\3\5\1\53\3\5"+
+    "\20\0\2\5\4\0\5\5\1\54\1\0\7\5\20\0"+
+    "\2\5\4\0\6\5\1\0\3\5\1\55\3\5\20\0"+
+    "\2\5\4\0\6\5\1\0\5\5\1\56\1\5\20\0"+
+    "\2\5\4\0\4\5\1\57\1\5\1\0\7\5\20\0"+
+    "\2\5\4\0\6\5\1\0\1\5\1\60\5\5\20\0"+
+    "\2\5\4\0\1\5\1\61\4\5\1\0\7\5\20\0"+
+    "\2\5\4\0\6\5\1\0\2\5\1\62\4\5\20\0"+
+    "\2\5\4\0\5\5\1\63\1\0\7\5\20\0\2\5"+
+    "\4\0\2\5\1\64\3\5\1\0\7\5\20\0\2\5"+
+    "\4\0\6\5\1\0\2\5\1\65\4\5\20\0\2\5"+
+    "\4\0\6\5\1\0\1\5\1\66\5\5\20\0\2\5"+
+    "\4\0\6\5\1\67\7\5\20\0\2\5\4\0\4\5"+
+    "\1\70\1\5\1\0\7\5\20\0\2\5\4\0\6\5"+
+    "\1\0\1\5\1\71\5\5\20\0\2\5\4\0\5\5"+
+    "\1\72\1\0\7\5\20\0\2\5\13\0\1\73\34\0"+
+    "\6\5\1\0\1\5\1\74\5\5\20\0\2\5\14\0"+
+    "\1\75\44\0\1\76\34\0\1\77\44\0\1\100\51\0"+
+    "\1\101\41\0\1\102\40\0\1\103\51\0\1\104\26\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1209];
+    int [] result = new int[1656];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -191,11 +195,11 @@ class Yylex {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\6\1\2\11\2\0\5\11\5\1\1\11"+
-    "\1\0\22\1\1\0\2\1\10\0\1\11";
+    "\1\0\1\11\7\1\2\11\3\0\11\11\6\1\2\11"+
+    "\1\0\26\1\1\0\3\1\1\0\1\1\7\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[54];
+    int [] result = new int[68];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -303,7 +307,7 @@ class Yylex {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 142) {
+    while (i < 150) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -611,84 +615,112 @@ class Yylex {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { yyparser.yylval = new ParserVal(yytext());
-		return Parser.VALOR;
-            }
-          case 20: break;
-          case 2: 
             { 
             }
-          case 21: break;
-          case 3: 
+          case 27: break;
+          case 2: 
             { yyparser.yylval = new ParserVal(yytext());
 		return Parser.IDENTIFICADOR;
             }
-          case 22: break;
-          case 4: 
+          case 28: break;
+          case 3: 
             { return Parser.VIRGULA;
             }
-          case 23: break;
-          case 5: 
+          case 29: break;
+          case 4: 
             { return Parser.PONTO_VIRGULA;
             }
-          case 24: break;
-          case 6: 
+          case 30: break;
+          case 5: 
             { return Parser.OPERADOR_MAIS;
             }
-          case 25: break;
+          case 31: break;
+          case 6: 
+            { return Parser.OPERADOR_MENOS;
+            }
+          case 32: break;
           case 7: 
+            { return Parser.OPERADOR_MULTIPLICACAO;
+            }
+          case 33: break;
+          case 8: 
+            { return Parser.OPERADOR_DIVISAO;
+            }
+          case 34: break;
+          case 9: 
+            { return Parser.OPERADOR_RESTO_DIVISAO;
+            }
+          case 35: break;
+          case 10: 
             { return Parser.ABRE_PARENTESES;
             }
-          case 26: break;
-          case 8: 
+          case 36: break;
+          case 11: 
             { return Parser.FECHA_PARENTESES;
             }
-          case 27: break;
-          case 9: 
+          case 37: break;
+          case 12: 
             { return Parser.ABRE_CHAVES;
             }
-          case 28: break;
-          case 10: 
+          case 38: break;
+          case 13: 
             { return Parser.FECHA_CHAVES;
             }
-          case 29: break;
-          case 11: 
+          case 39: break;
+          case 14: 
+            { yyparser.yylval = new ParserVal(yytext());
+		return Parser.VALOR;
+            }
+          case 40: break;
+          case 15: 
+            { return Parser.SE;
+            }
+          case 41: break;
+          case 16: 
             { return Parser.OPERADOR_ATRIBUIR;
             }
-          case 30: break;
-          case 12: 
+          case 42: break;
+          case 17: 
+            { return Parser.OPERADOR_COMPARACAO;
+            }
+          case 43: break;
+          case 18: 
             { return Parser.OPERADOR_MENOR_IGUAL;
             }
-          case 31: break;
-          case 13: 
+          case 44: break;
+          case 19: 
             { yyparser.yylval = new ParserVal(yytext());
 		  return Parser.INCLUSAO_ARQUIVO;
             }
-          case 32: break;
-          case 14: 
+          case 45: break;
+          case 20: 
             { return Parser.PARA;
             }
-          case 33: break;
-          case 15: 
+          case 46: break;
+          case 21: 
             { return Parser.REAL;
             }
-          case 34: break;
-          case 16: 
+          case 47: break;
+          case 22: 
             { return Parser.FUNCAO;
             }
-          case 35: break;
-          case 17: 
+          case 48: break;
+          case 23: 
             { return Parser.INCLUIR;
             }
-          case 36: break;
-          case 18: 
+          case 49: break;
+          case 24: 
             { return Parser.INTEIRO;
             }
-          case 37: break;
-          case 19: 
+          case 50: break;
+          case 25: 
+            { return Parser.RETORNAR;
+            }
+          case 51: break;
+          case 26: 
             { return Parser.FUNCAO_PRINCIPAL;
             }
-          case 38: break;
+          case 52: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

@@ -24,11 +24,18 @@ NL = \n | \r | \r\n
 funcao_principal { return Parser.FUNCAO_PRINCIPAL; }
 funcao { return Parser.FUNCAO; }
 para { return Parser.PARA; }
+se { return Parser.SE; }
+retornar { return Parser.RETORNAR; }
 , { return Parser.VIRGULA; }
 ";" { return Parser.PONTO_VIRGULA; }
 ":=" { return Parser.OPERADOR_ATRIBUIR; }
+"==" { return Parser.OPERADOR_COMPARACAO; }
 "<=" { return Parser.OPERADOR_MENOR_IGUAL; }
 "+" { return Parser.OPERADOR_MAIS; }
+"-" { return Parser.OPERADOR_MENOS; }
+"*" { return Parser.OPERADOR_MULTIPLICACAO; }
+"/" { return Parser.OPERADOR_DIVISAO; }
+"%" { return Parser.OPERADOR_RESTO_DIVISAO; }
 incluir	{ return Parser.INCLUIR; }
 inteiro { return Parser.INTEIRO; }
 real { return Parser.REAL; }
@@ -42,7 +49,7 @@ real { return Parser.REAL; }
 		yyparser.yylval = new ParserVal(yytext());
 		return Parser.IDENTIFICADOR;
 	}
-[a-zA-Z0-9]*	{ 
+[a-zA-Z0-9]+	{ 
 		yyparser.yylval = new ParserVal(yytext());
 		return Parser.VALOR;
 	}	
