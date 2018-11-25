@@ -70,10 +70,6 @@ caracter { return Parser.CARACTER; }
 		yyparser.yylval = new ParserVal(yytext());
 		return Parser.IDENTIFICADOR;
 	}
-[a-zA-Z0-9]+	{ 
-		yyparser.yylval = new ParserVal(yytext());
-		return Parser.VALOR;
-	}	
 [0-9]+ {
   yyparser.yylval = new ParserVal(yytext());
   return Parser.VALOR_INTEIRO;

@@ -5,7 +5,6 @@
 
 /* BYACC Declarations */
 %token <sval> IDENTIFICADOR
-%token <sval> VALOR
 %token <sval> VALOR_INTEIRO
 %token <sval> INCLUSAO_ARQUIVO
 %token <sval> COMENTARIOS
@@ -102,16 +101,16 @@ comandos : declaracao comandos		{ $$ = $1 + $2; }
 		 | chamada_metodo comandos		{ $$ = $1 + ";\n" + $2; }
 		 | comando_imprima comandos		{ $$ = $1 + ";\n" + $2; }		 
 		 | COMENTARIOS comandos		{ $$ = $1  +"\n" + $2; }		 
-		 |	RETORNAR VALOR	{ $$ = "return "+ $2 + ";\n"; }
+		 |	RETORNAR VALOR_INTEIRO	{ $$ = "return "+ $2 + ";\n"; }
 		 |	RETORNAR STRING	{ $$ = "return "+ $2 + ";\n"; }		 
 		 |	RETORNAR IDENTIFICADOR	{ $$ = "return "+ $2 + ";\n"; }
 		 |					{ $$ = ""; }
 		 
 
-comando_para : PARA ABRE_PARENTESES IDENTIFICADOR OPERADOR_ATRIBUIR VALOR PONTO_VIRGULA IDENTIFICADOR operador_condicao IDENTIFICADOR PONTO_VIRGULA IDENTIFICADOR OPERADOR_MAIS OPERADOR_MAIS FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES{ $$ = "for(" + $3 + " = " + $5 + "; " + $7 +" <= " + $9 + "; " + $11 + "++" +"){\n" + $16 + "}\n"; }
-			 | PARA ABRE_PARENTESES IDENTIFICADOR OPERADOR_ATRIBUIR VALOR PONTO_VIRGULA IDENTIFICADOR operador_condicao VALOR PONTO_VIRGULA IDENTIFICADOR OPERADOR_MAIS OPERADOR_MAIS FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES{ $$ = "for(" + $3 + " = " + $5 + "; " + $7 +" <= " + $9 + "; " + $11 + "++" +"){\n" + $16 + "}\n"; }
+comando_para : PARA ABRE_PARENTESES IDENTIFICADOR OPERADOR_ATRIBUIR VALOR_INTEIRO PONTO_VIRGULA IDENTIFICADOR operador_condicao IDENTIFICADOR PONTO_VIRGULA IDENTIFICADOR OPERADOR_MAIS OPERADOR_MAIS FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES{ $$ = "for(" + $3 + " = " + $5 + "; " + $7 +" <= " + $9 + "; " + $11 + "++" +"){\n" + $16 + "}\n"; }
+			 | PARA ABRE_PARENTESES IDENTIFICADOR OPERADOR_ATRIBUIR VALOR_INTEIRO PONTO_VIRGULA IDENTIFICADOR operador_condicao VALOR_INTEIRO PONTO_VIRGULA IDENTIFICADOR OPERADOR_MAIS OPERADOR_MAIS FECHA_PARENTESES ABRE_CHAVES comandos FECHA_CHAVES{ $$ = "for(" + $3 + " = " + $5 + "; " + $7 +" <= " + $9 + "; " + $11 + "++" +"){\n" + $16 + "}\n"; }
 
-condicao :  atribuicao_valor operador_condicao VALOR {  $$ = $1 + " " + $2 + " " + $3; }
+condicao :  atribuicao_valor operador_condicao VALOR_INTEIRO {  $$ = $1 + " " + $2 + " " + $3; }
 			| atribuicao_valor operador_condicao IDENTIFICADOR {  $$ =  $1 + " " + $2 + " " + $3; }
 			
 comando_faca : FACA ABRE_CHAVES comandos FECHA_CHAVES ATE ABRE_PARENTESES condicao FECHA_PARENTESES		{  $$ = "do{\n" + $3 + "\n}while(" + $7 + ");\n"; }
@@ -136,6 +135,7 @@ parametros : tipo_dado IDENTIFICADOR	{  $$ = $1 + " " + $2 ; }
 		   | tipo_dado IDENTIFICADOR VIRGULA parametros	{  $$ = $1 + " " + $2 + ", " + $4; }
 
 declaracao : tipo_dado IDENTIFICADOR	{  $$ = $1 + " " + $2 + ";\n"; }
+		   | tipo_dado atribuicao	{  $$ = $1 + " " + $2 ; }
 		   | tipo_dado IDENTIFICADOR ABRE_COLCHETES VALOR_INTEIRO FECHA_COLCHETES	{  $$ = $1 + " " + $2 + "[" + $4 + "];\n"; }
 		   | tipo_dado IDENTIFICADOR ABRE_COLCHETES IDENTIFICADOR FECHA_COLCHETES	{  $$ = $1 + " " + $2 + "[" + $4 + "];\n"; }
 
@@ -144,13 +144,13 @@ atribuicao : IDENTIFICADOR OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + " = "
 		   | IDENTIFICADOR ABRE_COLCHETES IDENTIFICADOR FECHA_COLCHETES OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + "["+ $3 + "] = " + $6 + ";\n"; }
 		   | IDENTIFICADOR ABRE_COLCHETES VALOR_INTEIRO FECHA_COLCHETES OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + "["+ $3 + "] = " + $6 + ";\n"; }
 	   
-atribuicao_valor : VALOR	{  $$ = $1; }				
+atribuicao_valor : VALOR_INTEIRO	{  $$ = $1; }				
 				| chamada_metodo_identificador	{  $$ = $1; }
 				| chamada_metodo_identificador	OPERADOR_MAIS OPERADOR_MAIS {  $$ = $1 + "++"; }
 				| OPERADOR_MAIS OPERADOR_MAIS chamada_metodo_identificador {  $$ = "++" + $3; }
 				| chamada_metodo_identificador	OPERADOR_MENOS OPERADOR_MENOS {  $$ = $1 + "--"; }
 				| OPERADOR_MENOS OPERADOR_MENOS chamada_metodo_identificador {  $$ = "--" + $3; }
-				| VALOR operador atribuicao_valor	{  $$ = $1 + " " + $2 + " " + $3; }
+				| VALOR_INTEIRO operador atribuicao_valor	{  $$ = $1 + " " + $2 + " " + $3; }
 				| chamada_metodo_identificador operador atribuicao_valor	{  $$ = $1 + " " + $2 + " " + $3; }				
 				| ABRE_PARENTESES atribuicao_valor	FECHA_PARENTESES {  $$ = "(" + $2 + ")"; }
 				| ABRE_PARENTESES atribuicao_valor	FECHA_PARENTESES operador atribuicao_valor {  $$ = "(" + $2 + ") " + $4 + $5; }
