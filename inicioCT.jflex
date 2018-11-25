@@ -47,6 +47,7 @@ retornar { return Parser.RETORNAR; }
 "*" { return Parser.OPERADOR_MULTIPLICACAO; }
 "/" { return Parser.OPERADOR_DIVISAO; }
 "%" { return Parser.OPERADOR_RESTO_DIVISAO; }
+imprima	{ return Parser.IMPRIMA; }
 incluir	{ return Parser.INCLUIR; }
 inteiro { return Parser.INTEIRO; }
 real { return Parser.REAL; }
@@ -73,8 +74,9 @@ caracter { return Parser.CARACTER; }
 		yyparser.yylval = new ParserVal(yytext());
 		return Parser.VALOR;
 	}	
-[0-9]+	{ 
-		yyparser.yylval = new ParserVal(yytext());
-		return Parser.VALOR_INTEIRO;
-	}	
+[0-9]+ {
+  yyparser.yylval = new ParserVal(yytext());
+  return Parser.VALOR_INTEIRO;
+}	
+
 {NL}|" "|\t	{  }

@@ -30,6 +30,7 @@
 %token FUNCAO_PRINCIPAL
 %token FUNCAO
 %token INCLUIR
+%token IMPRIMA
 %token VIRGULA
 %token PONTO_VIRGULA
 %token OPERADOR_ATRIBUIR
@@ -71,12 +72,15 @@
 %type <sval> condicao
 %type <sval> chamada_metodo
 %type <sval> chamada_metodo_identificador
+%type <sval> comando_imprima
 
 %%
 inicio : programa	 { System.out.println($1); }
 
 programa : inclusao programa	{ $$ = $1 + "\n" + $2; }
 		 | COMENTARIOS programa { $$ = $1 + "\n" + $2; }
+		 | atribuicao programa { $$ = $1 + "\n" + $2; }
+		 | declaracao programa { $$ = $1 + "\n" + $2; }
 		 | funcao_principal programa { $$ = $1 + "\n" + $2; }
 		 | funcao programa { $$ = $1 + "\n" + $2; }
 	     |					{ $$ = ""; }
@@ -89,13 +93,14 @@ inclusao : INCLUIR INCLUSAO_ARQUIVO	{ $$ = "#include " + $2; }
 
 comandos : declaracao comandos		{ $$ = $1 + $2; }
 		 | atribuicao comandos		{ $$ = $1 + $2; }
-		 | atribuicao_valor comandos		{ $$ = $1 + "\n"+ $2; }
+		 | atribuicao_valor comandos		{ $$ = $1 + ";\n"+ $2; }
 		 | comando_para comandos		{ $$ = $1 + $2; }
 		 | comando_se comandos		{ $$ = $1 + $2; }
 		 | comando_faca comandos		{ $$ = $1 + $2; } 
 		 | comando_caso comandos		{ $$ = $1 + $2; } 		 
 		 | comando_enquanto comandos		{ $$ = $1 + $2; }
-		 | chamada_metodo comandos		{ $$ = $1 + ";\n" + $2; }		 
+		 | chamada_metodo comandos		{ $$ = $1 + ";\n" + $2; }
+		 | comando_imprima comandos		{ $$ = $1 + ";\n" + $2; }		 
 		 | COMENTARIOS comandos		{ $$ = $1  +"\n" + $2; }		 
 		 |	RETORNAR VALOR	{ $$ = "return "+ $2 + ";\n"; }
 		 |	RETORNAR STRING	{ $$ = "return "+ $2 + ";\n"; }		 
@@ -135,6 +140,7 @@ declaracao : tipo_dado IDENTIFICADOR	{  $$ = $1 + " " + $2 + ";\n"; }
 		   | tipo_dado IDENTIFICADOR ABRE_COLCHETES IDENTIFICADOR FECHA_COLCHETES	{  $$ = $1 + " " + $2 + "[" + $4 + "];\n"; }
 
 atribuicao : IDENTIFICADOR OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + " = " + $3 + ";\n"; }		   
+		   | IDENTIFICADOR OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + " = " + $3 + ";\n"; }		   
 		   | IDENTIFICADOR ABRE_COLCHETES IDENTIFICADOR FECHA_COLCHETES OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + "["+ $3 + "] = " + $6 + ";\n"; }
 		   | IDENTIFICADOR ABRE_COLCHETES VALOR_INTEIRO FECHA_COLCHETES OPERADOR_ATRIBUIR atribuicao_valor	{  $$ = $1 + "["+ $3 + "] = " + $6 + ";\n"; }
 	   
@@ -176,6 +182,8 @@ operador_condicao: OPERADOR_COMPARACAO {  $$ = "=="; }
 		 | OPERADOR_MENOR_IGUAL {  $$ = "<="; }	 
 		 | OPERADOR_MENOR {  $$ = "<"; }
 		 | OPERADOR_MAIOR {  $$ = ">"; }
+
+comando_imprima: IMPRIMA ABRE_PARENTESES chamada_metodo_parametros FECHA_PARENTESES {  $$ = "printf(" + $3 +  ")"; }
 		 
 %%
 

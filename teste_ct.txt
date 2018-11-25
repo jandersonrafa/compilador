@@ -1,9 +1,8 @@
-incluir <stdio.h>
-incluir <stdlib.h>
+// Inclusao de Bibliotecas
 
-funcao_principal {
-	inteiro teste	
-}
+incluir <stdio.h>
+
+// Funcao media que retorna um real
 
 funcao real media (inteiro a) {
   inteiro i
@@ -32,8 +31,9 @@ funcao inteiro soma (inteiro a) {
   somatorio := 0
   
   para (i:=1;i<=a;i++) {
-    se (a%i==0)
+    se (a%i==0){
       somatorio:=somatorio+i
+    }
   }
   retornar somatorio
 }
@@ -63,54 +63,14 @@ funcao caracter geraFuncao () {
   }
 }
 
-
 funcao inteiro geraValores () {
   inteiro retorno
   retorno := (rand()%10+1)
   retornar retorno
 }
 
-
 funcao_principal {
-  caracter funcoes[tamanho]
-  inteiro valores[tamanho]
-  real resultado[tamanho]
-  inteiro i
-
-  i := 0
-  enquanto (i < tamanho) {
-    funcoes[i]:=geraFuncao()
-    valores[i]:=geraValores()
-    i++  
-  }
-
-  i := 0
-  faca {
-    caso (funcoes[i]) {
-      opcao 'm': 
-        resultado[i]:=media(valores[i])
-        fim_opcao
-      opcao 's':
-        resultado[i]:=soma(valores[i])
-        fim_opcao
-      opcao 'f':
-        resultado[i]:=fatorial(valores[i])
-        fim_opcao
-      }
-      i++
-  } ate (i >= tamanho)
-
-  /* A parte final é só para verificar o resultado */
-  para (i :=0; i<tamanho; i++) {
-    imprima("%d ", valores[i])
-    imprima("%c ", funcoes[i])
-    imprima("%f\n", resultado[i])
-  }
-  retornar 0
-}
-funcao real teste (real maoi,inteiro teste) {
-	inteiro teste
-}
-funcao inteiro teste () {
-	inteiro teste
+  
+  
+  
 }
